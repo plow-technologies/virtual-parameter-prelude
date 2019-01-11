@@ -1,48 +1,43 @@
+    let InputParam =
+          { pid :
+              Integer
+          , location :
+              Integer
+          , company :
+              Integer
+          , site :
+              Integer
+          , desc :
+              Text
+          }
 
-  
-let newCommStatus = 
-[ { vparameterInfo =
-      { sources =
-          [ { pid = +167100, location = +1898, company = +40, site = +223 }
-          , { pid = +186679, location = +2408, company = +40, site = +223 }
-          ] : List
-              { pid :
-                  Integer
-              , location :
-                  Integer
-              , company :
-                  Integer
-              , site :
-                  Integer
-              }
-      , name =
-          "OnPing Comms Status"
-      , desc =
-          "OnPing Comms Status"
-      , script =
-          +7
-      }
-  }
-] : List
-    { vpids :
-        List Integer
-    , vparameterInfo :
-        { sources :
-            List
-            { pid :
-                Integer
-            , location :
-                Integer
-            , company :
-                Integer
-            , site :
-                Integer
-            }
-        , name :
-            Text
-        , desc :
-            Text
-        , script :
-            Integer
-        }
-    }
+in    \(controlIntervalParameter : InputParam)
+    -> \(onPingCommLossTimeParameter : InputParam)
+    ->   { vpids =
+             [ +1150 ] : List Integer
+         , vparameterInfo =
+             { sources =
+                 [ controlIntervalParameter
+                 , onPingCommLossTimeParameter
+                 ] : List InputParam
+             , name =
+                 "OnPing Comms Status"
+             , desc =
+                 "OnPing Comms Status"
+             , script =
+                 +7
+             }
+         }
+       : { vpids :
+             List Integer
+         , vparameterInfo :
+             { sources :
+                 List InputParam
+             , name :
+                 Text
+             , desc :
+                 Text
+             , script :
+                 Integer
+             }
+         }
